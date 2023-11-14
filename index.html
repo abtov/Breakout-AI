@@ -9,22 +9,24 @@
 </head>
 
 <body>
-
-  <canvas id="canvases"></canvas>
+  <div class="row">
+    <canvas id="canvases"></canvas>
+    <div class="consoles">
+      <div id="consoles"></div>
+    </div>
+  </div>
   <div class="info-text">
     <div class="controls">
         <button id="start">Start</button>
         <button id="stop">Stop</button>
         <button id="reset">Reset</button>
-        <button id="best_display">Display Best</button>
-        <button id="show_all">Show All</button>
+        <button id="best_display">Show Best</button>
     </div>
     <div id="info"></div>
   </div>
-
-  <script src="sources/Graphics.js"></script>
-  <script src="sources/Controls.js"></script>
+  <script src="sources/App.js"></script>
   <script src="sources/NeuralNetwork.js"></script>
+  <script src="sources/Graphics.js"></script>
   <script src="sources/Generation.js"></script>
 </body>
 

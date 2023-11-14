@@ -1,3 +1,7 @@
+function sigmoid(x) {
+  return 1 / (1 + Math.exp(-x/2));
+}
+
 class Layer {
     constructor(inputCount, outputCount) {
       this.inputs = new Array(inputCount);
@@ -13,7 +17,7 @@ class Layer {
       Layer.#randomize(this);
     }
   
-    #sigmoid(x) {
+    sigmoid(x) {
       return 1 / (1 + Math.exp(-x/2));
     }
   
@@ -38,7 +42,7 @@ class Layer {
         for(let j = 0; j < level.inputs.length; j++) {
           sum += level.inputs[j] * level.weights[j][i];
         }
-        level.outputs[i] = sum > level.biases[i] ? 1 : 0;
+        level.outputs[i] = sigmoid(sum + level.biases[i]);
       }
       return level.outputs;
     }
@@ -56,7 +60,7 @@ class Layer {
       }
     }
   
-    static mutate(network, amount=1) {
+    mutate(network, amount=0.2) {
       network.levels.forEach((level) => {
         for(let i = 0; i < level.biases.length; i++) {
           level.biases[i] = lerp(level.biases[i], Math.random() * 2 - 1, amount);
