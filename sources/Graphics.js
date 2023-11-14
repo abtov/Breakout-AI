@@ -5,6 +5,7 @@ canvas.width = 800;    // example size
 canvas.height = 600;
 
 var mouseX = null;
+var showLog = false;
 var total_simulation = [];
 
 class Player {
@@ -149,6 +150,7 @@ class Simulation {
         if(inputs) {
             let most = Math.max(...inputs)
             let controls = inputs.indexOf(most)
+            console.log(controls, inputs)
             this.wr = this.player.x + (controls > 0 ? (controls == 1 ?  -5 : 5) : 0);
             this.player.move(this.wr)
         }

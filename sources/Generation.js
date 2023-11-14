@@ -41,7 +41,7 @@ class Generation {
     let parse = 0;
 
     save = false;
-
+    console.clear();
     if(previous.size > 0) {
       previous.forEach(game => {
         if(Math.round(Math.random()) == 1) {
@@ -75,7 +75,6 @@ function Frame() {
   if(stop) return;
 
   canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
-  console.log(all_simulation.size < generation.intervals * 0.2)
   if(all_simulation.size < generation.intervals * 0.2 && !save) {
     good_enough = new Set([...good_enough, ...all_simulation]);
     save = true;
