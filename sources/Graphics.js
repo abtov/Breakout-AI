@@ -8,6 +8,14 @@ var mouseX = null;
 var showLog = false;
 var total_simulation = [];
 
+var player_speed = 20;
+var ball_speed = 10;
+
+function changeSpeed() {
+    player_speed = document.getElementById('paddle').value;
+    ball_speed = document.getElementById('ball').value;
+}
+
 class Player {
     constructor(id) {
         this.id = id;
@@ -79,7 +87,7 @@ class Ball {
         this.w = canvas.width / 10;
         this.h = canvas.height / 50;
         this.player = player;
-        this.speed = 1;
+        this.speed = ball_speed;
         this.vel = {
             x: Math.random() * 2 - 1 < 0 ? -1 : 1,
             y: 1
@@ -150,8 +158,7 @@ class Simulation {
         if(inputs) {
             let most = Math.max(...inputs)
             let controls = inputs.indexOf(most)
-            console.log(controls, inputs)
-            this.wr = this.player.x + (controls > 0 ? (controls == 1 ?  -5 : 5) : 0);
+            this.wr = this.player.x + (controls > 0 ? (controls == 1 ?  -player_speed : player_speed) : 0);
             this.player.move(this.wr)
         }
         if(isMouse) this.player.move(mouseX);

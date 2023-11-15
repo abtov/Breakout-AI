@@ -53,7 +53,7 @@ class Layer {
   }
   
   class NeuralNetwork {
-    constructor(neron) {
+    constructor(neron) { // new NeuralNetwork([3, 6, 2])
       this.levels = [];
       for(let i = 0; i < neron.length; i++) {
         this.levels[i] = new Layer(neron[i], neron[i + 1]);
